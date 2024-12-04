@@ -1,0 +1,25 @@
+<!--pages/addrecord/addrecord.wxml-->
+<view class="container">
+  <view class="form-item">
+    <text>类型：</text>
+    <picker mode="selector" range="{{typeOptions}}" bindchange="onTypeChange" value="{{typeOptions.indexOf(type)}}">
+      <view>{{type}}</view>
+    </picker>
+  </view>
+  <view class="form-item">
+    <text>日期：</text>
+    <input type="date" value="{{date}}" bindinput="onDateChange" />
+  </view>
+  <view class="form-item">
+    <text>类别：</text>
+    <picker mode="selector" range="{{currentCategories}}" bindchange="onCategoryChange" value="{{currentCategories.indexOf(category)}}">
+      <view>{{category}}</view>
+    </picker>
+    <input type="text" placeholder="添加新类别" bindconfirm="addCategory" />
+  </view>
+  <view class="form-item">
+    <text>金额：</text>
+    <input type="number" placeholder="请输入金额" bindinput="onAmountChange" />
+  </view>
+  <button bindtap="saveRecord">保存记录</button>
+</view>

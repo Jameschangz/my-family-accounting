@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="user-info">
+    <text>用户信息</text>
+    <text>昵称: {{userInfo.nickName}}</text>
+  </view>
+  <button bindtap="logout">退出登录</button>
+</view>

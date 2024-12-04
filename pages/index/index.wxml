@@ -1,0 +1,7 @@
+<view class="container">
+  <button bindtap="navigateToRecords">小金库</button>
+  <button bindtap="navigateToAddRecord">记一笔</button>
+  <button bindtap="navigateToStatistics">统计</button>
+  <button bindtap="navigateToSettings">设置</button>
+</view>
+

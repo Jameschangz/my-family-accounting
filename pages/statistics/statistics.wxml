@@ -1,0 +1,61 @@
+<scroll-view scroll-y class="scroll-container">
+  <view class="container">
+    <!-- 本月概览 -->
+    <view class="overview-section">
+      <text class="section-title">本月收支概况</text>
+      <view class="overview-content">
+        <view class="overview-item">
+          <text class="label">收入</text>
+          <text class="amount income">{{monthlyData.income}}元</text>
+        </view>
+        <view class="overview-item">
+          <text class="label">支出</text>
+          <text class="amount expense">{{monthlyData.expense}}元</text>
+        </view>
+        <view class="overview-item">
+          <text class="label">结余</text>
+          <text class="amount {{monthlyData.income - monthlyData.expense >= 0 ? 'income' : 'expense'}}">{{monthlyData.income - monthlyData.expense}}元</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 收支分布 -->
+    <view class="chart-section">
+      <text class="section-title">收支分布</text>
+      <view class="category-tabs">
+        <view class="tab {{activeTab === 'income' ? 'active' : ''}}" bindtap="switchTab" data-type="income">收入</view>
+        <view class="tab {{activeTab === 'expense' ? 'active' : ''}}" bindtap="switchTab" data-type="expense">支出</view>
+      </view>
+      <view class="category-list">
+        <block wx:for="{{monthlyData.categories}}" wx:key="name">
+          <view class="category-item" wx:if="{{(activeTab === 'income' && item.income > 0) || (activeTab === 'expense' && item.expense > 0)}}">
+            <view class="category-info">
+              <text class="category-name">{{item.name}}</text>
+              <text class="category-amount {{activeTab === 'income' ? 'income' : 'expense'}}">{{activeTab === 'income' ? item.income : item.expense}}元</text>
+            </view>
+            <view class="category-bar">
+              <view class="bar-fill {{activeTab}}" style="width: {{activeTab === 'income' ? item.incomePercentage : item.expensePercentage}}%"></view>
+            </view>
+            <text class="percentage">{{activeTab === 'income' ? item.incomePercentage : item.expensePercentage}}%</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 收支趋势 -->
+    <view class="chart-section">
+      <text class="section-title">收支趋势</text>
+      <view class="trend-list">
+        <block wx:for="{{monthlyData.dailyStats}}" wx:key="date">
+          <view class="trend-item">
+            <text class="trend-date">{{item.date}}</text>
+            <view class="trend-amounts">
+              <text class="trend-income">收入: {{item.income}}元</text>
+              <text class="trend-expense">支出: {{item.expense}}元</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</scroll-view>

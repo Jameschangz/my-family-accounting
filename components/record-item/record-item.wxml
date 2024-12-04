@@ -1,0 +1,3 @@
+<view class="record-item" bindtap="onTap">
+  <text>{{record.date}} - {{record.category}}: {{record.type}} {{record.amount}}元</text>
+</view>

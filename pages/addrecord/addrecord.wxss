@@ -1,0 +1,21 @@
+/* pages/addrecord/addrecord.wxss */
+.container {
+  padding: 20px;
+}
+
+.form-item {
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ce93d8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:active {
+  background-color: #ce93d8;
+}
